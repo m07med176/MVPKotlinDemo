@@ -28,9 +28,9 @@ class FavoriteAdapter(
         Log.d(TAG, "onBindViewHolder: ")
         val product = productArrayList[position]
         holder.tvBrand.text = product.brand
-        holder.tvDesc.setText(product.description)
-        holder.tvTitle.setText(product.title)
-        holder.tvPrice.setText(java.lang.String.valueOf(product.price))
+        holder.tvDesc.text = product.description
+        holder.tvTitle.text = product.title
+        holder.tvPrice.text = java.lang.String.valueOf(product.price)
         holder.ratingBar.isEnabled = false
         holder.ratingBar.rating = product.rating?.toFloat()?:0f
         Glide.with(context).load(product.thumbnail).into(holder.imageView)

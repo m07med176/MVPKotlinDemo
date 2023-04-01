@@ -14,7 +14,7 @@ import com.example.mvpkotlindemo.data.model.Product
 class ProductsListAdapter(
     private val context: Context,
     private val productArrayList: List<Product>,
-    var adapterConnector: AdapterConnector
+    var onClickToInsert: (product:Product)->Unit
     ) : RecyclerView.Adapter<ProductsListAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -35,7 +35,7 @@ class ProductsListAdapter(
         Glide.with(context).load(product.thumbnail).into(holder.imageView)
 
         holder.callRepo.setOnClickListener {
-            adapterConnector.onClickToInsert(product)
+            onClickToInsert(product)
         }
     }
 
@@ -66,10 +66,6 @@ class ProductsListAdapter(
             callRepo = itemView.findViewById(R.id.btn_call_repo)
             callRepo.text = "Add Product"
         }
-    }
-
-    interface AdapterConnector {
-        fun onClickToInsert(product: Product?)
     }
 
     companion object {
