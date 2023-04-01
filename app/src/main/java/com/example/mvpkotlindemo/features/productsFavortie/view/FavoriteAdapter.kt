@@ -14,18 +14,16 @@ import com.example.mvpkotlindemo.data.model.Product
 class FavoriteAdapter(
     private val context: Context,
     private val productArrayList: List<Product>,
-    private var adapterConnector: AdapterConnector
+    private var onClickToRemove: (product:Product)->Unit
 
     ) : RecyclerView.Adapter<FavoriteAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_list, parent, false)
-        Log.d(TAG, "onCreateViewHolder: ")
         return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        Log.d(TAG, "onBindViewHolder: ")
         val product = productArrayList[position]
         holder.tvBrand.text = product.brand
         holder.tvDesc.text = product.description
@@ -35,13 +33,12 @@ class FavoriteAdapter(
         holder.ratingBar.rating = product.rating?.toFloat()?:0f
         Glide.with(context).load(product.thumbnail).into(holder.imageView)
         holder.callRepo.setOnClickListener {
-            adapterConnector.onClickToRemove(product)
+          onClickToRemove(product)
         }
 
     }
 
     override fun getItemCount(): Int {
-        Log.d(TAG, "getItemCount: ")
         return productArrayList.size
     }
 
@@ -56,7 +53,6 @@ class FavoriteAdapter(
         var callRepo: Button
 
         init {
-            Log.d(TAG, "MyViewHolder: ")
             tvBrand = itemView.findViewById(R.id.tv_brand)
             tvDesc = itemView.findViewById(R.id.tv_desc)
             tvTitle = itemView.findViewById(R.id.tv_title)
@@ -69,11 +65,4 @@ class FavoriteAdapter(
         }
     }
 
-    interface AdapterConnector {
-        fun onClickToRemove(product: Product)
-    }
-
-    companion object {
-        var TAG = "Adapter"
-    }
 }
