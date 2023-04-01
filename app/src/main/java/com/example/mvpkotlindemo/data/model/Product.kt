@@ -1,5 +1,6 @@
 package com.example.mvpkotlindemo.data.model
 
+
 data class Product(
     val brand: String,
     val category: String,
