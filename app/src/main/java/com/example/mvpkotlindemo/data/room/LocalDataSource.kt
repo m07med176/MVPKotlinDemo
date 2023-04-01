@@ -9,7 +9,7 @@ class LocalDataSource(context:Context):LocalInteface {
         AppDatabase.getInstance(context).getFavorite()
     }
 
-    override suspend fun getAllProudects(): LiveData<List<Product>> {
+    override fun getAllProudects(): LiveData<List<Product>> {
         return favoriteDao.getAllProudects()
     }
 

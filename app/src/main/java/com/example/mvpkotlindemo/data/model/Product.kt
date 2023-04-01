@@ -2,20 +2,22 @@ package com.example.mvpkotlindemo.data.model
 
 import androidx.room.Entity
 import androidx.room.Ignore
+import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "Proudects_Tabel")
 data class Product(
-    val brand: String,
-    val category: String,
-    val description: String,
-    val discountPercentage: Double,
-    val id: Int,
+    var brand: String?=null,
+    var category: String?=null,
+    var description: String?=null,
+    var discountPercentage: Double?=null,
+    @PrimaryKey
+    var id: Int?=null,
     @Ignore
-    val images: List<String>,
-    val price: Int,
-    val rating: Double,
-    val stock: Int,
-    val thumbnail: String,
-    val title: String
+    var images: List<String>?=null,
+    var price: Int?=null,
+    var rating: Double?=null,
+    var stock: Int?=null,
+    var thumbnail: String?=null,
+    var title: String?=null
 )

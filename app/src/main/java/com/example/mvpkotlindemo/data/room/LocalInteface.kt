@@ -9,7 +9,7 @@ import com.example.mvpkotlindemo.data.model.Product
 
 interface LocalInteface {
 
-    suspend fun getAllProudects(): LiveData<List<Product>>
+    fun getAllProudects(): LiveData<List<Product>>
 
     suspend fun insertProudect (proudect: Product): Long
 

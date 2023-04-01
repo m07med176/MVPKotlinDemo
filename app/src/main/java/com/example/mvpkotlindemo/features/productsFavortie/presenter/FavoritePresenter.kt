@@ -13,7 +13,7 @@ class FavoritePresenter(
     ):FavoritePresenterInterface {
 
 
-    override suspend fun getAllProudects(lifecycleOwner: LifecycleOwner){
+    override fun getAllProudects(lifecycleOwner: LifecycleOwner){
         _repository.getAllProudects().observe(lifecycleOwner){products->
             _viewInterface.favoriteDataCallBack(products)
         }
