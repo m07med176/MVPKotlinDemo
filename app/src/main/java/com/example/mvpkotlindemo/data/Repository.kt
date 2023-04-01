@@ -24,7 +24,7 @@ class Repository private constructor(context: Context):RepositoryInteface {
         return remoteDataSource.getProudects(networkCallBack)
     }
 
-    override suspend fun getAllProudects(): LiveData<List<Product>> {
+    override fun getAllProudects(): LiveData<List<Product>> {
         return localDataSource.getAllProudects()
     }
 
