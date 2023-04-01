@@ -1,4 +1,7 @@
 package com.example.mvpkotlindemo.data
 
-interface RepositoryInteface {
+import com.example.mvpkotlindemo.data.network.RemoteInterface
+import com.example.mvpkotlindemo.data.room.LocalInteface
+
+interface RepositoryInteface: RemoteInterface, LocalInteface {
 }
